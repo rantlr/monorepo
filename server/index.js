@@ -21,7 +21,9 @@ const app = express();
 app.use(express.json());
 
 app.get('/rants', async (req, res) => {
-  const { rows: rants } = await db.query('select * from rant order by id desc');
+  const { rows: rants } = await db.query(
+    'select * from rant order by rant.created desc',
+  );
   res.send(rants);
 });
 
@@ -40,7 +42,10 @@ app.get('/rants/:id', async (req, res) => {
 
   const [{ rows: rants }, { rows: updates }] = await Promise.all([
     db.query('select * from rant where rant.id = $1', [id]),
-    db.query('select * from rant_update where rant_id = $1', [id]),
+    db.query(
+      'select * from rant_update where rant_id = $1 order by rant_update.created',
+      [id],
+    ),
   ]);
 
   const rant = rants[0];
@@ -48,8 +53,8 @@ app.get('/rants/:id', async (req, res) => {
   res.send({ ...rant, updates });
 });
 
-app.post('/rants/:id/updates', async (req, res) => {
-  const rantId = req.params.id;
+app.post('/rants/:rantId/updates', async (req, res) => {
+  const { rantId } = req.params;
   const { body } = req.body;
 
   const { rows: rantUpdates } = await db.query(
@@ -58,6 +63,18 @@ app.post('/rants/:id/updates', async (req, res) => {
   );
 
   res.status(201).send(rantUpdates[0]);
+});
+
+app.put('/rants/:rantId/updates/:rantUpdateId', async (req, res) => {
+  const { rantUpdateId } = req.params;
+  const { body } = req.body;
+
+  const { rows: rantUpdates } = await db.query(
+    'update rant_update set body = $1, updated = now() where rant_update.id = $2 returning *',
+    [body, rantUpdateId],
+  );
+
+  res.status(200).send(rantUpdates[0]);
 });
 
 app.listen(8080, () => {
