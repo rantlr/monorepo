@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { Link } from '@reach/router';
 import formatDate from './date-formatter';
 
-export default ({ title, background, created }) => (
+export default ({ id, title, background, created }) => (
   <article id={encodeURIComponent(title)}>
-    <h1>{title}</h1>
+    <Link to={`/rant/${id}`}>
+      <h1>{title}</h1>
+    </Link>
     <p>{background}</p>
     <p>Created at {formatDate(new Date(created))}</p>
   </article>

@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "express": "^4.16.4",
     "pg": "^7.6.1",
     "react": "^16.6.1",

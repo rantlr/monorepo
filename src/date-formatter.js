@@ -23,6 +23,16 @@ const months = [
   'December',
 ];
 
+function pad(number, digits = 2) {
+  const string = `${number}`;
+
+  if (string.length >= digits) {
+    return string;
+  }
+
+  return pad(`0${string}`);
+}
+
 function getOrdinalIndicator(number) {
   if (number > 2 && number < 20) {
     return 'th';
@@ -53,5 +63,7 @@ module.exports = time => {
   const ordinalIndicator = getOrdinalIndicator(time);
   const year = time.getFullYear();
 
-  return `${hour}:${minute}:${second} on ${dayName} ${monthName} ${date}${ordinalIndicator} ${year}`;
+  return `${pad(hour)}:${pad(minute)}:${pad(
+    second,
+  )} on ${dayName} ${monthName} ${date}${ordinalIndicator} ${year}`;
 };

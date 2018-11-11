@@ -16,10 +16,7 @@ export default class Homepage extends React.PureComponent {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Rantlr</h1>
-        </header>
+      <React.Fragment>
         <section id="new-rant">
           <h1>New rant</h1>
           <RantForm
@@ -47,7 +44,7 @@ export default class Homepage extends React.PureComponent {
             <RantList rants={this.state.rants} />
           )}
         </section>
-      </div>
+      </React.Fragment>
     );
   }
 }
