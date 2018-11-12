@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default ({ text, children }) => (
+const Label = ({ text, children }) => (
   <div
     style={{
       display: 'flex',
@@ -12,3 +12,5 @@ export default ({ text, children }) => (
     {children}
   </div>
 );
+
+export default Label;

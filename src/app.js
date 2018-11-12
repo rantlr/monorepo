@@ -4,7 +4,7 @@ import { Router, Link } from '@reach/router';
 import Homepage from './homepage';
 import RantPage from './rant-page';
 
-export default () => (
+const App = () => (
   <div className="App">
     <header className="App-header">
       <Link to="/">
@@ -17,3 +17,5 @@ export default () => (
     </Router>
   </div>
 );
+
+export default App;

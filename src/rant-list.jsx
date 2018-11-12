@@ -1,12 +1,14 @@
 import * as React from 'react';
-import Rant from './rant';
+import RantSummary from './rant-summary';
 
-export default ({ rants }) => (
+const RantList = ({ rants }) => (
   <ul>
     {rants.map(rant => (
       <li key={rant.id}>
-        <Rant {...rant} />
+        <RantSummary {...rant} />
       </li>
     ))}
   </ul>
 );
+
+export default RantList;
