@@ -1,7 +1,14 @@
 import * as React from 'react';
+import { css } from 'react-emotion';
+import { spacing } from './styles';
 
 const Button = ({ children, ...props }) => (
-  <button style={{ marginTop: 8 }} {...props}>
+  <button
+    className={css`
+      margin-top: ${spacing.medium};
+    `}
+    {...props}
+  >
     {children}
   </button>
 );

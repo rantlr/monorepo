@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { css } from 'react-emotion';
 import formatDate from './date-formatter';
 import Button from './button';
 import ErrorMessage from './error-message';
+import { spacing } from './styles';
 
 export default class Rant extends React.PureComponent {
   state = {
@@ -14,7 +16,12 @@ export default class Rant extends React.PureComponent {
     const { error } = this.state;
 
     return (
-      <article style={{ border: 'solid black 1px', padding: 2 }}>
+      <article
+        className={css`
+          border: 'solid black 1px';
+          padding: ${spacing.tiny};
+        `}
+      >
         <h1>{title}</h1>
         <p>{background}</p>
         <Button

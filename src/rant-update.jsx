@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { css } from 'react-emotion';
+import { spacing } from './styles';
 import formatDate from './date-formatter';
 import Label from './label';
 import Button from './button';
@@ -25,7 +27,10 @@ export default class RantUpdate extends React.PureComponent {
     return (
       <article
         id={`rant-update-${rantUpdate.id}`}
-        style={{ border: 'solid hotpink 1px', padding: 2 }}
+        className={css`
+          border: solid hotpink 1px;
+          padding: ${spacing.tiny};
+        `}
       >
         {editing ? (
           <form
