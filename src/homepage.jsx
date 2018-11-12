@@ -31,7 +31,7 @@ export default class Homepage extends React.PureComponent {
 
               const rant = await response.json();
 
-              this.setState({ rants: [rant, ...this.state.rants] });
+              this.props.navigate(`/rant/${rant.id}`);
             }}
           />
         </section>

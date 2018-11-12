@@ -16,6 +16,12 @@ export default class RantForm extends React.PureComponent {
         onSubmit={e => {
           e.preventDefault();
           this.props.onSubmit(this.state);
+
+          // Clear the fields
+          this.setState({
+            title: '',
+            background: '',
+          });
         }}
       >
         <Label>
