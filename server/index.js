@@ -77,6 +77,17 @@ app.put('/rants/:rantId/updates/:rantUpdateId', async (req, res) => {
   res.status(200).send(rantUpdates[0]);
 });
 
+app.delete('/rants/:rantId/updates/:rantUpdateId', async (req, res) => {
+  const { rantUpdateId } = req.params;
+
+  const { rows: rantUpdates } = await db.query(
+    'delete from rant_update where rant_update.id = $1 returning *',
+    [rantUpdateId],
+  );
+
+  res.send(rantUpdates[0]);
+});
+
 app.listen(8080, () => {
   console.log('listening on http://localhost:8080/');
 });

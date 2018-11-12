@@ -26,7 +26,7 @@ class RantUpdate extends React.PureComponent {
   }
 
   render() {
-    const { rant } = this.props;
+    const { rant, onDelete } = this.props;
     const { rantUpdate, editing, saving } = this.state;
 
     return (
@@ -88,6 +88,36 @@ class RantUpdate extends React.PureComponent {
             </Button>
           </React.Fragment>
         )}
+        <Button
+          type="button"
+          onClick={async () => {
+            if (
+              window.confirm(
+                `Are you sure you want to delete this update? "${
+                  rantUpdate.body
+                }"`,
+                () => {
+                  console.log('confirmed');
+                },
+              )
+            ) {
+              const response = await fetch(
+                `/rants/${rant.id}/updates/${rantUpdate.id}`,
+                {
+                  method: 'DELETE',
+                },
+              );
+
+              if (response.ok) {
+                onDelete();
+              } else {
+                this.setState({ error: await response.text() });
+              }
+            }
+          }}
+        >
+          Delete
+        </Button>
         <p>Created {formatDate(new Date(rantUpdate.created))}</p>
         <p>Updated {formatDate(new Date(rantUpdate.updated))}</p>
       </article>
@@ -120,8 +150,23 @@ export default class RantPage extends React.PureComponent {
       <React.Fragment>
         <section>
           <Post {...rant} />
-          {updates.map(update => (
-            <RantUpdate key={update.id} rantUpdate={update} rant={rant} />
+          {updates.map((update, index) => (
+            <RantUpdate
+              key={update.id}
+              rantUpdate={update}
+              rant={rant}
+              onDelete={() => {
+                this.setState({
+                  rant: {
+                    ...rant,
+                    updates: [
+                      ...updates.slice(0, index),
+                      ...updates.slice(index + 1, updates.length),
+                    ],
+                  },
+                });
+              }}
+            />
           ))}
         </section>
         <section id="rant-update-form">
