@@ -53,6 +53,26 @@ app.get('/rants/:id', async (req, res) => {
   res.send({ ...rant, updates });
 });
 
+app.delete('/rants/:id', async (req, res) => {
+  const { id } = req.params;
+
+  await db.query('begin');
+
+  const { rows: rantUpdates } = await db.query(
+    'delete from rant_update where rant_update.rant_id = $1 returning *',
+    [id],
+  );
+
+  const {
+    rows: [rant],
+  } = await db.query('delete from rant where rant.id = $1 returning *', [id]);
+
+  await db.query('commit');
+
+  const deletedRant = { ...rant, updates: rantUpdates };
+  res.send(deletedRant);
+});
+
 app.post('/rants/:rantId/updates', async (req, res) => {
   const { rantId } = req.params;
   const { body } = req.body;

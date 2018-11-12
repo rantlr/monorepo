@@ -4,14 +4,51 @@ import RantUpdateForm from './rant-update-form';
 import Label from './label';
 import Button from './button';
 import Textarea from './textarea';
+import ErrorMessage from './error-message';
 
-const Post = ({ title, background, created }) => (
-  <article style={{ border: 'solid black 1px', padding: 2 }}>
-    <h1>{title}</h1>
-    <p>{background}</p>
-    <p>Created at {formatDate(new Date(created))}</p>
-  </article>
-);
+class Post extends React.PureComponent {
+  state = {
+    error: null,
+  };
+
+  render() {
+    const { id, title, background, created, updated, onDelete } = this.props;
+
+    const { error } = this.state;
+
+    return (
+      <article style={{ border: 'solid black 1px', padding: 2 }}>
+        <h1>{title}</h1>
+        <p>{background}</p>
+        <Button
+          type="button"
+          onClick={async () => {
+            if (
+              window.confirm(
+                `Are you sure you want to delete this rant? "${title}"`,
+              )
+            ) {
+              const response = await fetch(`/rants/${id}`, {
+                method: 'DELETE',
+              });
+
+              if (response.ok) {
+                onDelete();
+              } else {
+                this.setState({ error: await response.text() });
+              }
+            }
+          }}
+        >
+          Delete
+        </Button>
+        <p>Created at {formatDate(new Date(created))}</p>
+        <p>Updated at {formatDate(new Date(updated))}</p>
+        <ErrorMessage>{error}</ErrorMessage>
+      </article>
+    );
+  }
+}
 
 class RantUpdate extends React.PureComponent {
   constructor(props) {
@@ -22,12 +59,13 @@ class RantUpdate extends React.PureComponent {
       editing: false,
       saving: false,
       justSaved: false,
+      error: null,
     };
   }
 
   render() {
     const { rant, onDelete } = this.props;
-    const { rantUpdate, editing, saving } = this.state;
+    const { rantUpdate, editing, saving, error } = this.state;
 
     return (
       <article style={{ border: 'solid hotpink 1px', padding: 2 }}>
@@ -63,7 +101,6 @@ class RantUpdate extends React.PureComponent {
                 value={rantUpdate.body}
                 disabled={saving}
                 onChange={e => {
-                  console.log(e.target.value);
                   this.setState({
                     rantUpdate: {
                       ...rantUpdate,
@@ -96,9 +133,6 @@ class RantUpdate extends React.PureComponent {
                 `Are you sure you want to delete this update? "${
                   rantUpdate.body
                 }"`,
-                () => {
-                  console.log('confirmed');
-                },
               )
             ) {
               const response = await fetch(
@@ -120,6 +154,7 @@ class RantUpdate extends React.PureComponent {
         </Button>
         <p>Created {formatDate(new Date(rantUpdate.created))}</p>
         <p>Updated {formatDate(new Date(rantUpdate.updated))}</p>
+        <ErrorMessage>{error}</ErrorMessage>
       </article>
     );
   }
@@ -149,7 +184,12 @@ export default class RantPage extends React.PureComponent {
     return (
       <React.Fragment>
         <section>
-          <Post {...rant} />
+          <Post
+            {...rant}
+            onDelete={() => {
+              this.props.navigate('/');
+            }}
+          />
           {updates.map((update, index) => (
             <RantUpdate
               key={update.id}
