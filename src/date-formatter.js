@@ -60,7 +60,7 @@ module.exports = time => {
   const month = time.getMonth();
   const monthName = months[month];
   const date = time.getDate();
-  const ordinalIndicator = getOrdinalIndicator(time);
+  const ordinalIndicator = getOrdinalIndicator(date);
   const year = time.getFullYear();
 
   return `${pad(hour)}:${pad(minute)}:${pad(
