@@ -23,7 +23,10 @@ export default class RantUpdate extends React.PureComponent {
     const { rantUpdate, editing, saving, error } = this.state;
 
     return (
-      <article style={{ border: 'solid hotpink 1px', padding: 2 }}>
+      <article
+        id={`rant-update-${rantUpdate.id}`}
+        style={{ border: 'solid hotpink 1px', padding: 2 }}
+      >
         {editing ? (
           <form
             onSubmit={async e => {
@@ -107,7 +110,11 @@ export default class RantUpdate extends React.PureComponent {
         >
           Delete
         </Button>
-        <p>Created {formatDate(new Date(rantUpdate.created))}</p>
+        <p>
+          <a href={`#rant-update-${rantUpdate.id}`}>
+            Created {formatDate(new Date(rantUpdate.created))}
+          </a>
+        </p>
         <p>Updated {formatDate(new Date(rantUpdate.updated))}</p>
         <ErrorMessage>{error}</ErrorMessage>
       </article>
