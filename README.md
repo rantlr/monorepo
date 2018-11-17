@@ -5,9 +5,9 @@
 I just assume you're on a platform that can run shell scripts, and have Docker installed (`brew cask install docker`)
 
 1. Install dependencies: `yarn`
-1. Create a directory for database values: `mkdir /tmp/rants`
-1. Start a postgres database with Docker: `./scripts/run-pg-docker.sh` (this mounts `/tmp/rants` into the container for persistent data)
-1. Set up tables etc. in the database: `./scripts/init-db.sh`
+1. Start a postgres database with Docker: `./scripts/run-pg-docker.sh` (this
+   creates and mounts `/tmp/rants` into the container for persistent data)
+1. Set up tables etc. in the database: `yarn knex migrate:latest`
 
 ## Start the server with save-to-reload
 

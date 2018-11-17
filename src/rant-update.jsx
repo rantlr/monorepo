@@ -117,10 +117,10 @@ export default class RantUpdate extends React.PureComponent {
         </Button>
         <p>
           <a href={`#rant-update-${rantUpdate.id}`}>
-            Created {formatDate(new Date(rantUpdate.created))}
+            Created {formatDate(new Date(rantUpdate.created_at))}
           </a>
         </p>
-        <p>Updated {formatDate(new Date(rantUpdate.updated))}</p>
+        <p>Updated {formatDate(new Date(rantUpdate.updated_at))}</p>
         <ErrorMessage>{error}</ErrorMessage>
       </article>
     );

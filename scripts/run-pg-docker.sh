@@ -7,6 +7,9 @@ echo "Creating network $network_name..."
 docker network create $network_name
 echo "Created network $network_name"
 
+echo "Creating /tmp/rants-data for database volume"
+mkdir -p /tmp/rants-data
+
 shutdown() {
   echo "Caught SIGINT; removing Docker container $container_name..."
   docker rm $container_name

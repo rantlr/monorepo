@@ -11,7 +11,7 @@ export default class Rant extends React.PureComponent {
   };
 
   render() {
-    const { id, title, background, created, updated, onDelete } = this.props;
+    const { id, title, background, created_at, updated_at, onDelete } = this.props;
 
     const { error } = this.state;
 
@@ -46,8 +46,8 @@ export default class Rant extends React.PureComponent {
         >
           Delete
         </Button>
-        <p>Created at {formatDate(new Date(created))}</p>
-        <p>Updated at {formatDate(new Date(updated))}</p>
+        <p>Created at {formatDate(new Date(created_at))}</p>
+        <p>Updated at {formatDate(new Date(updated_at))}</p>
         <ErrorMessage>{error}</ErrorMessage>
       </article>
     );
