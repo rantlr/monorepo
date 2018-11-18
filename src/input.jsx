@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
-type Props = React.ElementConfig<'label'>
+// fixme: Does this even work?
+type Props = React.ElementConfig<'input'>
 
 export default (props: Props) => <input {...props} />;

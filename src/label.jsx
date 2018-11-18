@@ -4,9 +4,9 @@ import * as React from 'react';
 import { css } from 'react-emotion';
 import { spacing } from './styles';
 
-type Props = {
-  text: string,
-  children: React.Node,
+interface Props  {
+  text: string;
+  children: React.Node;
 };
 
 const Label = (props: Props) => {
