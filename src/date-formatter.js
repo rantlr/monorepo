@@ -64,6 +64,6 @@ module.exports = function formatDate(time: string | Date) {
   const year = time.getFullYear();
 
   return `${pad(hour)}:${pad(minute)}:${pad(
-    second
+    second,
   )} on ${dayName} ${monthName} ${date}${ordinalIndicator} ${year}`;
 };

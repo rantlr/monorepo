@@ -45,7 +45,7 @@ export default class Rant extends React.PureComponent<Props, State> {
           onClick={async () => {
             if (
               window.confirm(
-                `Are you sure you want to delete this rant? "${title}"`
+                `Are you sure you want to delete this rant? "${title}"`,
               )
             ) {
               const response = await fetch(`/rants/${id}`, {

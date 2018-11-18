@@ -4,10 +4,10 @@ import * as React from 'react';
 import { css } from 'react-emotion';
 import { spacing } from './styles';
 
-interface Props  {
+interface Props {
   text: string;
   children: React.Node;
-};
+}
 
 const Label = (props: Props) => {
   const { text, children } = props;

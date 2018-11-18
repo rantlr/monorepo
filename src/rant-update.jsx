@@ -8,9 +8,9 @@ import ErrorMessage from './error-message';
 import Label from './label';
 import { spacing } from './styles';
 import Textarea from './textarea';
-import {RantUpdate as IRantUpdate, Rant as IRant} from './types'
+import { RantUpdate as IRantUpdate, Rant as IRant } from './types';
 
-interface Props  {
+interface Props {
   rant: IRant;
   rantUpdate: IRantUpdate;
   onDelete: () => void;
@@ -22,7 +22,6 @@ interface State {
   saving: boolean;
   justSaved: boolean;
   error?: string;
-
 }
 
 export default class RantUpdate extends React.PureComponent<Props, State> {
