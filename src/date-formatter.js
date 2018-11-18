@@ -1,3 +1,5 @@
+// @flow
+
 const days = [
   'Sunday',
   'Monday',
@@ -23,22 +25,16 @@ const months = [
   'December',
 ];
 
-function pad(number, digits = 2) {
-  const string = `${number}`;
-
-  if (string.length >= digits) {
-    return string;
-  }
-
-  return pad(`0${string}`);
+function pad(num: number, digits = 2) {
+  return `000000000000000${num}`.slice(-digits);
 }
 
-function getOrdinalIndicator(number) {
-  if (number > 2 && number < 20) {
+function getOrdinalIndicator(num: number) {
+  if (num > 2 && num < 20) {
     return 'th';
   }
 
-  const finalDigit = number % 10;
+  const finalDigit = num % 10;
 
   if (finalDigit === 1) {
     return 'st';
@@ -51,7 +47,7 @@ function getOrdinalIndicator(number) {
   return 'th';
 }
 
-module.exports = function formatDate(time) {
+module.exports = function formatDate(time: string | Date) {
   if (typeof time === 'string') {
     return formatDate(new Date(time));
   }
@@ -68,6 +64,6 @@ module.exports = function formatDate(time) {
   const year = time.getFullYear();
 
   return `${pad(hour)}:${pad(minute)}:${pad(
-    second,
+    second
   )} on ${dayName} ${monthName} ${date}${ordinalIndicator} ${year}`;
 };

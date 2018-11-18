@@ -1,3 +1,7 @@
+// @flow
+
 import * as React from 'react';
 
-export default props => <input {...props} />;
+type Props = React.ElementConfig<'label'>
+
+export default (props: Props) => <input {...props} />;

@@ -1,8 +1,10 @@
+// @flow
+
 import * as React from 'react';
 import { css } from 'react-emotion';
 import { colors } from './styles';
 
-const ErrorMessage = ({ children }) => {
+const ErrorMessage = ({ children }: { children: React.Node }) => {
   if (!children) {
     return null;
   }
