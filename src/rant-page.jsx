@@ -1,12 +1,20 @@
+// @flow
+
 import * as React from 'react';
 import Rant from './rant';
 import RantUpdate from './rant-update';
 import RantUpdateForm from './rant-update-form';
+import { Rant as IRant } from './types';
+import type { RouteProps } from '@reach/router';
 
-export default class RantPage extends React.PureComponent {
-  state = {
-    rant: null,
-  };
+interface Props extends RouteProps {}
+
+interface State {
+  rant?: IRant;
+}
+
+export default class RantPage extends React.PureComponent<Props, State> {
+  state = {};
 
   async componentDidMount() {
     const response = await fetch(`/rants/${this.props.id}`);
