@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<html>
+  <head />
+  <body>
+    <div>
+      <article
+        id="Some%20title"
+      >
+        <a
+          href="/rant/1234"
+        >
+          <h1>
+            Some title
+          </h1>
+        </a>
+        <p>
+          Some background
+        </p>
+        <p>
+          Created at 
+          16:19:52 on Saturday November 17th 2018
+        </p>
+        <p>
+          Updated at 
+          11:11:12 on Sunday December 23th 2018
+        </p>
+      </article>
+    </div>
+  </body>
+</html>
+`;

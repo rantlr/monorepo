@@ -8,8 +8,8 @@ const RantSummary = ({ id, title, background, created_at, updated_at }) => (
       <h1>{title}</h1>
     </Link>
     <p>{background}</p>
-    <p>Created at {formatDate(new Date(created_at))}</p>
-    <p>Updated at {formatDate(new Date(updated_at))}</p>
+    <p>Created at {formatDate(created_at)}</p>
+    <p>Updated at {formatDate(updated_at)}</p>
   </article>
 );
 

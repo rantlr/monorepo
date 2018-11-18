@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<html>
+  <head>
+    <style
+      data-emotion=""
+    >
+      
+    </style>
+    <style
+      data-emotion=""
+    >
+      
+      .css-hqfkvb{border:solid hotpink 1px;padding:2px;}
+    </style>
+    <style
+      data-emotion=""
+    >
+      
+      .css-1e0neex{margin-top:8px;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <article
+        class="css-hqfkvb"
+        id="rant-update-1234"
+      >
+        <p>
+          some body
+        </p>
+        <button
+          class="css-1e0neex"
+          type="button"
+        >
+          Edit
+        </button>
+        <button
+          class="css-1e0neex"
+          type="button"
+        >
+          Delete
+        </button>
+        <p>
+          <a
+            href="#rant-update-1234"
+          >
+            Created 
+            16:19:52 on Saturday November 17th 2018
+          </a>
+        </p>
+        <p>
+          Updated 
+          11:11:12 on Sunday December 23th 2018
+        </p>
+      </article>
+    </div>
+  </body>
+</html>
+`;

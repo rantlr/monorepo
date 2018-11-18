@@ -51,7 +51,11 @@ function getOrdinalIndicator(number) {
   return 'th';
 }
 
-module.exports = time => {
+module.exports = function formatDate(time) {
+  if (typeof time === 'string') {
+    return formatDate(new Date(time));
+  }
+
   const second = time.getSeconds();
   const minute = time.getMinutes();
   const hour = time.getHours();
