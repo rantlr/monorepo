@@ -1,8 +1,17 @@
+// @flow
+
 import { Link } from '@reach/router';
 import * as React from 'react';
 import formatDate from './date-formatter';
+import type { Rant } from './types';
 
-const RantSummary = ({ id, title, background, created_at, updated_at }) => (
+const RantSummary = ({
+  id,
+  title,
+  background,
+  created_at,
+  updated_at,
+}: Rant) => (
   <article id={encodeURIComponent(title)}>
     <Link to={`/rant/${id}`}>
       <h1>{title}</h1>

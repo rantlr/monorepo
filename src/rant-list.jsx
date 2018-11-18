@@ -1,7 +1,10 @@
+// @flow
+
 import * as React from 'react';
 import RantSummary from './rant-summary';
+import type { Rant } from './types';
 
-const RantList = ({ rants }) => (
+const RantList = ({ rants }: { rants: Rant[] }) => (
   <ul>
     {rants.map(rant => (
       <li key={rant.id}>
