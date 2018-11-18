@@ -4,7 +4,7 @@ import * as React from 'react';
 import { css } from 'react-emotion';
 import { colors } from './styles';
 
-const ErrorMessage = ({ children }: { children: React.Node }) => {
+const ErrorMessage = ({ children }: { children: React.Node | typeof undefined }) => {
   if (!children) {
     return null;
   }

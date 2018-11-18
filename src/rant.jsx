@@ -1,14 +1,23 @@
+// @flow
+
 import * as React from 'react';
 import { css } from 'react-emotion';
 import Button from './button';
 import formatDate from './date-formatter';
 import ErrorMessage from './error-message';
 import { spacing } from './styles';
+import type { Rant as IRant } from './types';
 
-export default class Rant extends React.PureComponent {
-  state = {
-    error: null,
-  };
+type Props = IRant & {
+  onDelete: () => void,
+};
+
+interface State {
+  error?: string;
+}
+
+export default class Rant extends React.PureComponent<Props, State> {
+  state = {};
 
   render() {
     const {
@@ -36,7 +45,7 @@ export default class Rant extends React.PureComponent {
           onClick={async () => {
             if (
               window.confirm(
-                `Are you sure you want to delete this rant? "${title}"`,
+                `Are you sure you want to delete this rant? "${title}"`
               )
             ) {
               const response = await fetch(`/rants/${id}`, {

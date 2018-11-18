@@ -1,6 +1,7 @@
+// @flow
+
 import * as React from 'react';
 
-type Props = React.TextareaHTMLAttributes
+type Props = React.ElementConfig<'textarea'>
 
 export default (props: Props) => <textarea {...props} />;
-

@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import { css } from 'react-emotion';
 import Button from './button';
@@ -6,9 +8,25 @@ import ErrorMessage from './error-message';
 import Label from './label';
 import { spacing } from './styles';
 import Textarea from './textarea';
+import {RantUpdate as IRantUpdate, Rant as IRant} from './types'
 
-export default class RantUpdate extends React.PureComponent {
-  constructor(props) {
+interface Props  {
+  rant: IRant;
+  rantUpdate: IRantUpdate;
+  onDelete: () => void;
+}
+
+interface State {
+  rantUpdate: IRantUpdate;
+  editing: boolean;
+  saving: boolean;
+  justSaved: boolean;
+  error?: string;
+
+}
+
+export default class RantUpdate extends React.PureComponent<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -16,7 +34,6 @@ export default class RantUpdate extends React.PureComponent {
       editing: false,
       saving: false,
       justSaved: false,
-      error: null,
     };
   }
 
