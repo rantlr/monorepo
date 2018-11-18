@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'react-emotion';
-import formatDate from './date-formatter';
 import Button from './button';
+import formatDate from './date-formatter';
 import ErrorMessage from './error-message';
 import { spacing } from './styles';
 

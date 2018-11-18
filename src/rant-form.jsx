@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Input from './input';
-import Textarea from './textarea';
-import Label from './label';
 import Button from './button';
+import Input from './input';
+import Label from './label';
+import Textarea from './textarea';
 
 export default class RantForm extends React.PureComponent {
   state = {

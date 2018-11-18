@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Textarea from './textarea';
-import Label from './label';
 import Button from './button';
+import Label from './label';
+import Textarea from './textarea';
 
 export default class RantUpdateForm extends React.PureComponent {
   state = {

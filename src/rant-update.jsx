@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { css } from 'react-emotion';
-import { spacing } from './styles';
-import formatDate from './date-formatter';
-import Label from './label';
 import Button from './button';
-import Textarea from './textarea';
+import formatDate from './date-formatter';
 import ErrorMessage from './error-message';
+import Label from './label';
+import { spacing } from './styles';
+import Textarea from './textarea';
 
 export default class RantUpdate extends React.PureComponent {
   constructor(props) {

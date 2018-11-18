@@ -1,6 +1,14 @@
+// @flow
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './app';
+import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = document.getElementById('root');
+
+if (root) {
+  ReactDOM.render(<App />, root);
+} else {
+  throw new Error("Can't render root");
+}

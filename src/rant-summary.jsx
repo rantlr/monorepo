@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Link } from '@reach/router';
+import * as React from 'react';
 import formatDate from './date-formatter';
 
 const RantSummary = ({ id, title, background, created_at, updated_at }) => (

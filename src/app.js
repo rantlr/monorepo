@@ -1,6 +1,8 @@
+// @flow
+
+import { Link, Router } from '@reach/router';
 import React from 'react';
 import './app.css';
-import { Router, Link } from '@reach/router';
 import Homepage from './homepage';
 import RantPage from './rant-page';
 

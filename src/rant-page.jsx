@@ -1,7 +1,7 @@
 import * as React from 'react';
-import RantUpdateForm from './rant-update-form';
 import Rant from './rant';
 import RantUpdate from './rant-update';
+import RantUpdateForm from './rant-update-form';
 
 export default class RantPage extends React.PureComponent {
   state = {
