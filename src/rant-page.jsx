@@ -7,7 +7,7 @@ import RantUpdateForm from './rant-update-form';
 import { Rant as IRant } from './types';
 import type { RouteProps } from '@reach/router';
 
-interface Props extends RouteProps {}
+type Props = RouteProps;
 
 interface State {
   rant?: IRant;

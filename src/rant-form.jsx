@@ -48,7 +48,7 @@ export default class RantForm extends React.PureComponent<Props, State> {
             onChange={e => this.setState({ background: e.target.value })}
           />
         </Label>
-        <Button>Publish rant</Button>
+        <Button> Publish rant</Button>
       </form>
     );
   }

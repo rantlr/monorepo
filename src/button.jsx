@@ -1,8 +1,12 @@
+// @flow
+
 import * as React from 'react';
 import { css } from 'react-emotion';
 import { spacing } from './styles';
 
-const Button = ({ children, ...props }) => (
+type Props = React.ElementConfig<'button'>;
+
+const Button = ({ children, ...props }:Props) => (
   <button
     className={css`
       margin-top: ${spacing.medium};
